@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[CHECK TEST] Get Your Certified Title</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg-color:#0b0f19;--card-bg:#131b2e;--border-color:#1e293b;--accent-gold:#d4af37;--text-main:#f8fafc;--text-muted:#94a3b8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg-color);color:var(--text-main);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem;overflow-x:hidden}
+.container{width:100%;max-width:800px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px;padding:2.5rem;box-shadow:0 20px 25px -5px rgba(0,0,0,.5);animation:fadeIn 1s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+header{text-align:center;margin-bottom:2rem}
+h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--accent-gold);margin-bottom:.5rem;letter-spacing:1px}
+.subtitle{font-style:italic;color:var(--text-muted)}
+.decree-section{line-height:1.7;color:#cbd5e1;margin-bottom:2rem;font-size:1.05rem}
+.decree-section h3{font-family:'Cinzel',serif;color:var(--accent-gold);margin:1.5rem 0 .75rem;font-size:1.3rem}
+.highlight-box{background:rgba(212,175,55,.05);border-left:4px solid var(--accent-gold);padding:1.25rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.interactive-form{background:rgba(15,23,42,.6);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;margin-top:2rem}
+.form-group{margin-bottom:1.25rem}
+label{display:block;font-weight:600;margin-bottom:.5rem;font-size:.95rem}
+input[type=text]{width:100%;padding:.875rem 1rem;background:#090d16;border:1px solid var(--border-color);border-radius:8px;color:#fff;font-size:1rem}
+input[type=text]:focus{outline:none;border-color:var(--accent-gold)}
+#pay-section{display:none}
+.payment-box{background:#090d16;border:1px dashed var(--accent-gold);padding:1.5rem;border-radius:8px;margin:1.5rem 0;text-align:center}
+.qr-code-img{width:180px;height:180px;border-radius:8px;margin-bottom:1rem;border:2px solid var(--border-color);object-fit:contain;background:#fff}
+.network-warning{background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.3);color:#fda4af;padding:.5rem .75rem;border-radius:6px;font-size:.8rem;font-weight:bold;margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase}
+.wallet-container{display:flex;flex-direction:column;gap:.5rem;align-items:center;background:#0b0f19;padding:.75rem;border-radius:6px;border:1px solid var(--border-color)}
+.wallet-address-text{font-size:.8rem;color:var(--accent-gold);word-break:break-all;font-family:monospace}
+.btn-copy{background:var(--accent-gold);color:#0b0f19;border:none;padding:.4rem .8rem;font-size:.75rem;font-weight:bold;border-radius:4px;cursor:pointer}
+.legal-warning{background:rgba(244,63,94,.05);border:1px solid rgba(244,63,94,.2);padding:1rem;border-radius:8px;margin:1.5rem 0;font-size:.85rem;color:#fda4af;line-height:1.5}
+.checkbox-container{display:flex;align-items:flex-start;gap:.75rem;margin:1.25rem 0;cursor:pointer;font-size:.9rem;line-height:1.4}
+.checkbox-container input{margin-top:.2rem;width:18px;height:18px;accent-color:var(--accent-gold);cursor:pointer}
+.btn-submit{width:100%;padding:1rem;background:var(--accent-gold);color:#0b0f19;font-family:'Cinzel',serif;font-weight:700;font-size:1.1rem;border:none;border-radius:8px;cursor:pointer;transition:transform .1s,background-color .2s}
+.btn-submit:hover{background:#e6c547;transform:translateY(-2px)}
+.btn-submit:disabled,.btn-submit:disabled:hover{background:#475569;color:#94a3b8;opacity:.7;cursor:not-allowed;transform:none}
+#status{margin-top:1rem;font-size:.9rem;color:#fda4af;text-align:center;min-height:1.2rem}
+#status.ok{color:var(--accent-gold)}
+#certificate-result{display:none;text-align:center;background:#fff;color:#111;padding:3rem 2rem;border-radius:12px;border:8px double var(--accent-gold)}
+#certificate-result h2{font-family:'Cinzel',serif;color:#b8860b;font-size:2rem;margin-bottom:.5rem}
+.cert-awarded{font-style:italic;color:#555;margin-bottom:1.5rem}
+.cert-title-text{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:bold;color:#0f172a;margin:1.5rem 0;padding:1rem;background:#f8fafc;border-top:2px solid #e2e8f0;border-bottom:2px solid #e2e8f0}
+.watermark{margin-top:2rem;font-size:.75rem;font-weight:bold;color:#94a3b8;letter-spacing:2px;text-transform:uppercase}
+.ps-note{margin-top:1rem;font-size:.85rem;color:var(--text-muted);font-style:italic;text-align:center}
+@media(max-width:600px){.container{padding:1.5rem}}
+</style>
+</head>
+<body>
+<div style="background:#f59e0b;color:#111;font-weight:bold;text-align:center;padding:.6rem 1rem;border-radius:8px;margin-bottom:1rem;width:100%;max-width:800px">CHECK TEST VERSION: lets you test the real payment check for free, using any recent USDT transfer from Solscan. Do not upload this one.</div>
+
+<div class="container" id="main-container">
+<header>
+<h1>Get Your Certified Title</h1>
+<div class="subtitle">"These titles are officially certified by me [maybe? I'm not entirely sure]."</div>
+</header>
+
+<div class="decree-section">
+<h3>The Decree</h3>
+<p>Hearken, weary traveler of the digital wasteland. You have arrived at the ultimate destination of your absolute boredom.</p>
+<p style="margin-top:1rem">Here, you may submit yourself to a completely pointless bureaucratic ordeal: proving who you are by describing yourself. In exchange for your sacrifice of one single USDT, our entirely automated, zero-infrastructure system will forge for you an official, bespoke <strong>Certified Title</strong>.</p>
+<div class="highlight-box">Be warned: <strong>these titles will add nothing to your value.</strong> They hold zero weight in a court of law, grant you zero professional privileges, and impress absolutely nobody who matters. It is a completely meaningless digital artifact minted purely to satisfy your passing vanity.</div>
+<p>If you are ready to trade a tiny fraction of your wealth for a laminated piece of text backed by absolute nobody, proceed downward.</p>
+</div>
+
+<div class="interactive-form">
+<div class="form-group">
+<label for="user-description">Describe Yourself (e.g., Professional caffeine addict and chronic over-thinker):</label>
+<input type="text" id="user-description" placeholder="Type your definition here..." maxlength="80">
+</div>
+<button class="btn-submit" id="btn-continue" onclick="continueToPayment()">Continue to Payment</button>
+
+<div id="pay-section">
+<div class="payment-box">
+<img src="qrcode.png" alt="Scan to pay 1 USDT on Solana" class="qr-code-img" onerror="this.style.display='none'">
+<div class="network-warning">⚠️ USE ONLY SOLANA NETWORK ⚠️</div>
+<div style="font-size:.85rem;color:var(--text-muted);margin-bottom:.75rem">Send 1 USDT, or your exchange's minimum withdrawal amount if that is higher. Use only the Solana network or your funds will be lost. Send only one USDT, or your exchange's minimum withdrawal amount if that is higher; if you send more than that, we are not responsible for that, and it will still be counted as just one. Anything below one USDT might result in you losing your money and not getting your title. Exchanges take a withdrawal fee out of what you send, so send a little extra to cover it. Paste your transaction hash within 25 minutes of sending, because older hashes expire automatically.</div>
+<div class="wallet-container">
+<div class="wallet-address-text" id="wallet-addr"></div>
+<button class="btn-copy" id="btn-copy" onclick="copyAddress()">Copy Address</button>
+</div>
+</div>
+
+<div class="form-group">
+<label for="test-wallet">TEST ONLY: receiving address to check (the "To" address from Solscan)</label>
+<input type="text" id="test-wallet" placeholder="Paste the To address of the transfer here">
+</div>
+
+<div class="form-group">
+<label for="txid-input">Paste Transaction Hash (TXID) after sending:</label>
+<input type="text" id="txid-input" placeholder="e.g., 5Kz7...9vB (Paste transaction signature)">
+</div>
+
+<div class="legal-warning">
+<strong>THE FINAL WARNING &amp; LIABILITY DISCLAIMER:</strong> These titles do not give you any legal pass to anything at all. You cannot use this to get out of a speeding ticket, avoid airport security, or trick your landlord.
+<br><br>
+<strong>Strict Rules &amp; Payment Limits:</strong> The titles generated must belong exclusively to the individual requesting it for themselves. Do not include anyone's name at all, real or fictional, not even yours. Write your description like a normal sentence: a capital letter in the middle of a sentence looks like a name to our robot and gets rejected (some popular games and brands could be allowed). Describe yourself in at least three words. Do not include any well-known public figures, celebrities, or personnel, and do not include anything offensive towards any religion, religious figures, or nations/political entities. Use only English words; no other languages are allowed, because our robot only speaks English and gets confused otherwise. Furthermore, you must send <strong>only one USDT, or your exchange's minimum withdrawal amount if that is higher</strong>; if you send more than that, we are not responsible, and it will still be counted as just one. If you attempt to use any prohibited names or offensive context, your title will be instantly rejected, it means absolutely nothing, and you will lose your USDT entirely with zero refunds. We are completely and legally not responsible for any title you generate or any trouble you get into. Do not sue us; we are broke.
+<br><br>
+<strong>TIME LIMIT RULE:</strong> Paste your transaction hash within 25 minutes of sending your payment. Any hash older than 25 minutes expires automatically and is rejected, and your money is lost. A hash can be used only once. The safest way is to pay first and paste your hash right away.
+<br><br>
+<strong>MINIMUM PAYMENT RULE:</strong> Do not send anything below one USDT, because it might result in you losing your money and not getting your title. Sending your exchange's minimum withdrawal amount instead is fine if that is higher, and exchange fees come out of what you send, so send a little extra to cover them.
+<br><br>
+<strong>No Storage Rule:</strong> None of the titles are stored. There is no database. You must download it, copy it, save it, screenshot it, whatever, because as soon as you refresh the page, your title is gone for good.
+</div>
+
+<label class="checkbox-container">
+<input type="checkbox" id="legal-checkbox">
+<span>I solemnly swear that I am wasting my own money, keeping my description strictly for myself without referencing any well-known figures, religions, or nations, using only English words, aware that I must send only one USDT, or my exchange's minimum withdrawal amount if that is higher, for a title, aware that if I send more than that it still counts as one and will just give me one title, aware that if I send anything below one USDT I might lose my money and not get my title, aware that I must paste my transaction hash within 25 minutes of paying or it expires and my money is lost, acknowledging that any violation results in rejected generation and lost funds, and accepting full responsibility for any trouble I get into.</span>
+</label>
+
+<button class="btn-submit" id="btn-generate" onclick="generateTitle()" disabled>Generate My Certified Title</button>
+<div class="ps-note">P.S. All sales are final. Once your dollar is gone, it is floating in the crypto ether forever, and there are absolutely no refunds under any circumstances, because honestly, what did you expect? :)</div>
+<div class="ps-note" style="margin-top:.75rem">None of the titles are stored. There is no database. So copy it, screenshot it, download it, whatever, because as soon as you refresh the page, it's gone for good.</div>
+</div>
+<div id="status" role="status" aria-live="polite"></div>
+</div>
+</div>
+
+<div class="container" id="certificate-result">
+<h2>OFFICIALLY CERTIFIED TITLE</h2>
+<div class="cert-awarded">Be it known that this document validates the existence of:</div>
+<div class="cert-title-text" id="generated-title-display"></div>
+<p style="font-size:.9rem;color:#475569;margin-top:1rem" id="user-echo-text"></p>
+<div class="watermark">OFFICIALLY MEANINGLESS — ISSUED BY SOME GUY ON THE INTERNET</div>
+<button class="btn-submit" style="margin-top:2rem" onclick="downloadCert()">Download My Certificate (PNG)</button>
+<p style="font-size:.8rem;color:#64748b;margin-top:.75rem;font-style:italic">Nothing is stored. Download or screenshot now, because refreshing makes it vanish forever.</p>
+<p id="cert-hint" style="display:none;font-size:.85rem;color:#475569;margin-top:1rem">If nothing downloaded, press and hold (or right-click) the image below and choose Save Image.</p>
+<img id="cert-preview" alt="Your certificate" style="display:none;max-width:100%;margin:.5rem auto 0;border:1px solid #e2e8f0;border-radius:8px">
+<button class="btn-submit" style="margin-top:1rem" onclick="location.reload()">Get Another Worthless Title</button>
+</div>
+
+<script>
+// ---------- SETTINGS ----------
+let WALLET = "G4jzg54wV9dejksmuDtE1dCExvLB5keoAbVFkyaJ1yKZ"; // must be your WALLET address, not a token account
+const USDT_MINT = "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"; // USDT on Solana
+const WINDOW_SECONDS = 1500; // a hash expires 25 minutes after the payment (measured by Solana's own clock)
+const MIN_UNITS = 600000; // 0.60 USDT (6 decimals); allows a fee shortfall. Change to 1000000 for strict 1.00
+// Optional: paste a free Helius key between the quotes (see the instructions). Leave it empty to skip.
+const HELIUS_KEY = "";
+// Free public Solana servers from well-known providers. A dead or busy one is simply skipped.
+const RPCS = ["https://api.mainnet-beta.solana.com", "https://solana-rpc.publicnode.com", "https://rpc.magicblock.app/mainnet", "https://solana.drpc.org", "https://endpoints.omniatech.io/v1/sol/mainnet/public", "https://solana-mainnet.rpc.extrnode.com"];
+// Optional: paste your Cloudflare Worker address here (see worker.js). When filled in, the Worker checks the payment
+// and remembers used hashes for everyone, so no hash can be reused. Leave empty to check payments in the browser only.
+const WORKER_URL = "";
+
+// ---------- BLOCKLIST (lowercase, no apostrophes; whole-word match) ----------
+const RELIGION = "allah,muhamad,muhamed,mohamad,mohd,muhd,mehmet,mehmed,mahomet,mhmd,pbuh,peace be upon him,god,gods,goddess,prophet,prophets,messenger of allah,muhammad,mohammed,mohammad,muhammed,mohamed,quran,koran,hadith,sunnah,sharia,islam,islamic,muslim,muslims,mosque,masjid,imam,caliph,khalifa,sahaba,jibreel,jihad,mujahid,infidel,kafir,kuffar,ayatollah,mullah,sheikh,jesus,christ,christian,christians,christianity,church,bible,pope,priest,bishop,moses,musa,abraham,ibrahim,isa,mary,satan,devil,lucifer,judaism,jew,jews,jewish,torah,rabbi,synagogue,hindu,hinduism,krishna,shiva,vishnu,ganesh,brahma,buddha,buddhism,buddhist,sikh,sikhism,religion,religious";
+const COUNTRIES = "afghanistan,albania,algeria,andorra,angola,antigua,argentina,armenia,australia,austria,azerbaijan,bahamas,bahrain,bangladesh,barbados,belarus,belgium,belize,benin,bhutan,bolivia,bosnia,botswana,brazil,brunei,bulgaria,burkina faso,burundi,cambodia,cameroon,canada,cape verde,central african republic,chad,chile,china,colombia,comoros,congo,costa rica,croatia,cuba,cyprus,czechia,czech republic,denmark,djibouti,dominica,dominican republic,ecuador,egypt,el salvador,equatorial guinea,eritrea,estonia,eswatini,swaziland,ethiopia,fiji,finland,france,gabon,gambia,georgia,germany,ghana,greece,grenada,guatemala,guinea,guyana,haiti,honduras,hungary,iceland,india,indonesia,iran,iraq,ireland,israel,italy,ivory coast,jamaica,japan,jordan,kazakhstan,kenya,kiribati,kosovo,kuwait,kyrgyzstan,laos,latvia,lebanon,lesotho,liberia,libya,liechtenstein,lithuania,luxembourg,madagascar,malawi,malaysia,maldives,mali,malta,marshall islands,mauritania,mauritius,mexico,micronesia,moldova,monaco,mongolia,montenegro,morocco,mozambique,myanmar,burma,namibia,nauru,nepal,netherlands,holland,new zealand,nicaragua,niger,nigeria,north korea,south korea,korea,north macedonia,norway,oman,pakistan,palau,palestine,panama,papua new guinea,paraguay,peru,philippines,poland,portugal,qatar,romania,russia,rwanda,saint lucia,samoa,san marino,saudi arabia,saudi,senegal,serbia,seychelles,sierra leone,singapore,slovakia,slovenia,solomon islands,somalia,south africa,south sudan,spain,sri lanka,sudan,suriname,sweden,switzerland,syria,taiwan,tajikistan,tanzania,thailand,timor,togo,tonga,trinidad,tunisia,turkey,turkiye,turkmenistan,tuvalu,uganda,ukraine,united arab emirates,uae,united kingdom,uk,britain,england,scotland,wales,united states,usa,america,uruguay,uzbekistan,vanuatu,vatican,venezuela,vietnam,yemen,zambia,zimbabwe";
+const FIGURES = "trump,donald trump,biden,joe biden,obama,barack obama,putin,vladimir putin,zelensky,xi jinping,modi,narendra modi,erdogan,netanyahu,hitler,adolf hitler,stalin,mussolini,bin laden,osama,saddam,gaddafi,castro,kim jong un,elon musk,jeff bezos,bill gates,mark zuckerberg,steve jobs,warren buffett,sam altman,mrbeast,mr beast,pewdiepie,kardashian,kim kardashian,kanye,kanye west,taylor swift,beyonce,rihanna,drake,eminem,justin bieber,ariana grande,billie eilish,selena gomez,lady gaga,katy perry,adele,elvis,michael jackson,madonna,lionel messi,messi,cristiano ronaldo,ronaldo,neymar,mbappe,lebron james,lebron,michael jordan,kobe bryant,serena williams,roger federer,novak djokovic,tiger woods,usain bolt,muhammad ali,mike tyson,conor mcgregor,khabib,jackie chan,bruce lee,jet li,tom cruise,brad pitt,leonardo dicaprio,johnny depp,dwayne johnson,the rock,will smith,keanu reeves,robert downey,scarlett johansson,angelina jolie,morgan freeman,shah rukh khan,salman khan,amitabh bachchan,oprah,oprah winfrey,joe rogan,greta thunberg,malala,einstein,albert einstein,newton,isaac newton,tesla,nikola tesla,shakespeare,gandhi,mandela,nelson mandela,martin luther king,lincoln,abraham lincoln,napoleon,cleopatra,king charles,queen elizabeth,prince william,prince harry,meghan markle";
+const CHARACTERS = "mario,luigi,princess peach,bowser,yoshi,donkey kong,zelda,sonic,pikachu,batman,superman,spiderman,spider man,iron man,ironman,captain america,hulk,wolverine,deadpool,joker,wonder woman,aquaman,black panther,thanos,goku,vegeta,naruto,sasuke,luffy,zoro,saitama,mickey mouse,minnie mouse,donald duck,goofy,elsa,olaf,simba,mufasa,woody,buzz lightyear,nemo,shrek,spongebob,patrick star,squidward,homer simpson,bart simpson,peppa pig,dora,bluey,harry potter,hermione,dumbledore,voldemort,gandalf,frodo,darth vader,yoda,luke skywalker,mandalorian,santa claus,sherlock holmes,james bond,jon snow,walter white,tony stark,peter parker,bruce wayne,clark kent,kratos,herobrine,tom and jerry,scooby doo,garfield,snoopy,winnie the pooh,hello kitty,bugs bunny,daffy duck,tweety,pacman,mega man,kirby,samus,ishowspeed,kai cenat,markiplier,ninja blevins";
+const NAMES = new Set(("james,john,robert,michael,david,richard,joseph,thomas,charles,daniel,matthew,anthony,donald,steven,paul,andrew,joshua,kenneth,kevin,brian,george,edward,ronald,timothy,jason,jeffrey,ryan,jacob,gary,nicholas,eric,jonathan,stephen,larry,justin,scott,brandon,benjamin,samuel,gregory,alexander,patrick,frank,raymond,dennis,jerry,tyler,aaron,jose,adam,nathan,henry,douglas,zachary,peter,kyle,walter,ethan,jeremy,harold,keith,christian,roger,noah,gerald,carl,terry,sean,austin,arthur,lawrence,jesse,dylan,bryan,joe,billy,bruce,albert,willie,gabriel,logan,alan,juan,wayne,roy,ralph,randy,eugene,vincent,russell,elijah,louis,bobby,philip,johnny,liam,mason,oliver,lucas,oscar,leo,jake,luke,owen,connor,ian,cody,tony,mike,dave,chris,steve,jim,tom,tim,josh,matt,nick,sam,alex,ben,dan,rob,andy,danny,joey,charlie,freddie,harry,jamie,rick,ricky,ron,ted,fred,greg,jeff,jon,mary,patricia,jennifer,linda,elizabeth,barbara,susan,jessica,sarah,karen,lisa,nancy,betty,margaret,sandra,ashley,kimberly,emily,donna,michelle,carol,amanda,dorothy,melissa,deborah,stephanie,rebecca,sharon,laura,cynthia,kathleen,amy,angela,shirley,anna,brenda,pamela,emma,nicole,helen,samantha,katherine,christine,debra,rachel,carolyn,janet,catherine,maria,heather,diane,olivia,julie,joyce,victoria,kelly,christina,lauren,joan,evelyn,judith,megan,cheryl,andrea,hannah,martha,jacqueline,frances,gloria,teresa,kathryn,sara,janice,jean,alice,madison,doris,abigail,julia,judy,denise,marilyn,beverly,danielle,theresa,sophia,marie,diana,brittany,natalie,isabella,charlotte,alexis,kayla,lily,chloe,mia,ella,zoe,ava,sofia,layla,nora,zara,maya,jenny,jess,jen,beth,kate,katie,becky,ahmed,ahmad,ali,omar,umar,usman,uthman,othman,abu,bakr,hamza,hassan,hussein,hussain,husain,ismail,yusuf,yousef,youssef,yunus,zayd,zaid,khalid,khaled,tariq,tarek,bilal,imran,faisal,fahad,saad,saeed,salman,abdullah,abdulrahman,abdul,rahman,rahim,karim,kareem,nasser,nasir,jamal,kamal,mustafa,mostafa,hamid,hamad,hakim,ayman,adnan,anas,asad,amir,ameer,emir,farid,fahim,idris,jabir,malik,mansour,mahmoud,mahmud,murad,nabil,nadir,rashid,rasheed,sami,samir,sharif,tahir,talha,waleed,walid,wael,yasir,yasser,zubair,zain,aisha,ayesha,fatima,fatimah,khadija,khadijah,maryam,zainab,zaynab,hafsa,asma,amina,aminah,leila,noor,nour,huda,hana,hanan,iman,jamila,lina,mariam,muna,nadia,rania,reem,salma,samira,sana,yasmin,yasmine,zahra,raj,rahul,amit,vijay,sanjay,priya,anjali,deepak,rohit,arjun,vikram,suresh,ramesh,sunil,anil,kumar,singh,sharma,patel,khan,carlos,miguel,luis,jorge,pedro,diego,mateo,santiago,valentina,camila,lucia,wei,chen,wang,zhang,kim,tanaka,yuki,hiro,kenji,sakura,akira,takeshi,hiroshi,smith,johnson,williams,jones,garcia,rodriguez,martinez,hernandez,lopez,gonzalez,wilson,anderson,thompson,ahmet,hasan,huseyin,ismael,yaqub,yacoub,dawood,daoud,sulaiman,suleiman,issa,yahya,zakaria,zakariya,ayoub,ayyub,idrees,harun,haroon,jibril,mikail,saleh,salih,luqman,younes,younis,qasim,kasim,bashir,basil,fadi,fares,firas,ghassan,hisham,husam,majid,marwan,mazen,mohsin,munir,muneer,nawaf,omran,qais,ramadan,rami,ramzi,riyad,sabir,sadiq,salim,sameer,sulayman,tawfiq,ubaid,waseem,wasim,yaser,zakir,zeeshan,zia,ziad,ziyad,faizan,arslan,aslam,asif,babar,farhan,fawad,haider,hashim,irfan,junaid,kashif,naveed,nadeem,rizwan,shahid,shahzad,shoaib,tanveer,umair,usama,waqas,sumayyah,ruqayyah,hajar,rabia,rabiah,bushra,farah,fariha,hira,iqra,kinza,mehwish,nida,nimra,sadia,sidra,sobia,uzma,warda,yusra,murat,emre,burak,jessica,jacob,kevin,brian,ryan,tyler,aiden,jayden,noah,liam,ethan,logan,lucas,mason,elijah,harper,evelyn,amelia,abigail,sophie,grace,lola,molly,millie,ellie,freya,poppy,isla,jessie,jenna,tina,tiffany,tracy,vanessa,veronica,wendy,yvonne,zoey,derek,dustin,garrett,glen,jared,jesse,jon,kirk,lenny,marcus,martin,marty,neil,norman,otis,preston,quinn,reggie,rex,rudy,spencer,stan,trevor,victor,vince,wade,warren,wesley,xavier,zack").split(","));
+const NAMES_AMBIG = new Set("will,mark,bill,grace,rose,hope,joy,art,ray,rich,pat,sue,bob,dean,drew,grant,summer,april,may,june,august,faith,ruby,pearl,amber,ivy,hunter,rocky,jack,sandy,penny,daisy,holly,violet,iris,jade,olive,dawn,eve,hazel,ginger,chase,cash,major,frank,lance,miles,page,ward,rusty,buck,buddy,bud,brook,cliff,rod,don,max,lee,park,li,brown,white,black,green,baker,cook,carter,miller,taylor,young,king,wright,hill,davis,moore,clark,harris,martin,jackson".split(","));
+
+// Strict name rule: a capitalized word in the middle of a sentence is treated as a possible name,
+// unless it is a well-known game, brand, day, or acronym
+const OK_CAPS = new Set("i,im,id,ill,ive,fortnite,minecraft,roblox,netflix,youtube,tiktok,instagram,snapchat,twitter,facebook,google,apple,amazon,xbox,playstation,nintendo,steam,discord,spotify,starbucks,mcdonalds,lego,disney,pokemon,android,iphone,ipad,windows,linux,python,javascript,java,whatsapp,uber,ebay,paypal,pepsi,cocacola,nike,adidas,ikea,wifi,monday,tuesday,wednesday,thursday,friday,saturday,sunday,usdt,solana,bitcoin,ethereum,valorant,fifa,nba,nfl,dj,tv,pc,ai,ps5,gta,ok".split(","));
+function hasCapName(desc) {
+  let start = true;
+  for (const raw of desc.split(/\s+/)) {
+    const w = raw.replace(/^[^A-Za-z0-9']+|[^A-Za-z0-9']+$/g, "");
+    if (!start && /^[A-Z]/.test(w) && w.length > 1 && !OK_CAPS.has(w.toLowerCase().replace(/['’]/g, ""))) return true;
+    start = /[.!?]["')]*$/.test(raw);
+  }
+  return false;
+}
+
+// Blocks first names / surnames. Common words that are also names only count when capitalized mid-sentence.
+function hasPersonName(desc) {
+  return desc.split(/[\s\-\/,]+/).some((raw, i) => {
+    const o = raw.replace(/[^A-Za-z'’]/g, "").replace(/['’]s$/i, "").replace(/['’]/g, "");
+    const w = o.toLowerCase();
+    return NAMES.has(w) || (i > 0 && /^[A-Z][a-z]/.test(o) && NAMES_AMBIG.has(w));
+  }) || variants(desc).some(toks => toks.some(t => NAMES_C.has(t) || NAMES_C.has(t.replace(/s$/, ""))));
+}
+
+const BLOCK = (RELIGION + "," + COUNTRIES + "," + FIGURES + "," + CHARACTERS).split(",").map(s => s.trim()).filter(Boolean);
+const collapse = s => s.replace(/(.)\1+/g, "$1");
+const BLOCK_RE = new RegExp("\\b(?:" + BLOCK.map(collapse).join("|") + ")s?\\b");
+// Long religious terms are also searched with all spaces removed, to catch "m u h a m m a d" style tricks
+const CRITICAL = RELIGION.split(",").map(w => collapse(w.replace(/ /g, ""))).filter(w => w.length >= 7);
+const NAMES_C = new Set([...NAMES].map(collapse));
+const LEET = { "0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "8": "b", "9": "g", "@": "a", "$": "s", "!": "i", "|": "i", "+": "t", "(": "c", "#": "h" };
+
+// Turns the text into several "cleaned" versions so tricks don't work:
+// accents/invisible characters removed, symbols read as letters (or ignored), v read as u,
+// dots/spaces between single letters joined (m.u.h.a.m.m.a.d), repeated letters squeezed (muuuhammmad)
+function variants(raw) {
+  const base = raw.normalize("NFKD").replace(/[\p{M}\p{Cf}]/gu, "").toLowerCase().replace(/['’`]/g, "");
+  return [base.replace(/[01345789@$!|+(#]/g, c => LEET[c]), base, base.replace(/v/g, "u")].map(t => {
+    const out = []; let run = [];
+    const flush = () => { if (run.length >= 3) out.push(run.join("")); else out.push(...run); run = []; };
+    t.replace(/[^a-z]+/g, " ").trim().split(" ").filter(Boolean).forEach(w => { if (w.length === 1) run.push(w); else { flush(); out.push(w); } });
+    flush();
+    return out.map(collapse);
+  });
+}
+
+function isBlocked(desc) {
+  return variants(desc).some(toks => {
+    const flat = toks.join("");
+    return BLOCK_RE.test(toks.join(" ")) || CRITICAL.some(c => flat.includes(c)) ||
+      toks.some(t => ["mhmd", "mhmt"].includes(collapse(t.replace(/[aeiouyw]/g, "")))); // any spelling of Muhammad
+  });
+}
+
+const norm = s => s.toLowerCase().replace(/['’`]/g, "").replace(/0/g, "o").replace(/1/g, "i").replace(/3/g, "e").replace(/@/g, "a").replace(/\$/g, "s").replace(/[^a-z\s]/g, " ").replace(/\s+/g, " ").trim();
+
+function checkDescription(desc) {
+  if (!desc) return "Please describe yourself first so we know what kind of majestic uselessness we are certifying.";
+  if (desc.split(/\s+/).length < 3) return "Please describe yourself in at least three words, like a short sentence about you. A bare name or a single word will not do.";
+  if ((desc.match(/\p{L}/gu) || []).some(ch => !/[A-Za-z]/.test(ch))) return "REJECTED: English words only. Our robot does not speak anything else. Your submission was blocked before you paid anything, lucky you.";
+  if (hasPersonName(desc)) return "REJECTED: No names, please. Not of real people, not of characters, not even your own. Nothing was charged, since you have not paid yet.";
+  if (isBlocked(desc)) return "REJECTED: Religious terms, nations, and well-known public figures/celebrities are strictly barred. Titles must be strictly for yourself. Nothing was charged, since you have not paid yet.";
+  if (hasCapName(desc)) return "REJECTED: No names, please. A capital letter in the middle of a sentence looks like a name to our robot, so write your description like a normal sentence. Nothing was charged, since you have not paid yet.";
+  return "";
+}
+
+const $ = id => document.getElementById(id);
+// Phones and dictation use curly quotes and fancy dashes; turn them into plain ones
+const cleanBase = s => s.replace(/[\u2018\u2019\u201B]/g, "'").replace(/[\u201C\u201D]/g, '"').replace(/[\u2013\u2014]/g, "-").replace(/\u2026/g, "...").trim();
+// If Caps Lock was on (everything in capitals), treat it as normal lowercase so it is not mistaken for names
+const cleanInput = s => { const t = cleanBase(s); return /[A-Z]/.test(t) && !/[a-z]/.test(t) ? t.toLowerCase() : t; };
+function setStatus(msg, ok) { const s = $("status"); s.textContent = msg; s.className = ok ? "ok" : ""; }
+
+$("wallet-addr").textContent = WALLET;
+$("legal-checkbox").checked = false;
+$("legal-checkbox").addEventListener("change", e => { $("btn-generate").disabled = !e.target.checked; });
+
+function copyAddress() {
+  const done = () => { $("btn-copy").textContent = "Copied!"; setTimeout(() => $("btn-copy").textContent = "Copy Address", 1500); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(WALLET).then(done).catch(fallbackCopy);
+  } else fallbackCopy();
+  function fallbackCopy() {
+    const t = document.createElement("textarea"); t.value = WALLET; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(t);
+  }
+}
+
+function continueToPayment() {
+  const err = checkDescription(cleanInput($("user-description").value));
+  if (err) return setStatus(err);
+  setStatus("");
+  $("pay-section").style.display = "block";
+  $("btn-continue").style.display = "none";
+  $("user-description").readOnly = true;
+}
+
+// Used hashes are remembered in this browser only (GitHub Pages has no server)
+function usedList() { try { return JSON.parse(localStorage.getItem("usedTx") || "[]"); } catch (e) { return []; } }
+function markUsed(sig) { try { localStorage.setItem("usedTx", JSON.stringify(usedList().concat(sig))); } catch (e) {} }
+
+async function ask(url, method, params) {
+  const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 6000);
+  try {
+    const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }), signal: ctl.signal });
+    const j = await r.json();
+    if (j.error) { const er = new Error("server error"); er.invalid = /invalid|decode|base58|signature|param/i.test((j.error.message || "")); throw er; }
+    return j.result;
+  } finally { clearTimeout(timer); }
+}
+
+// Asks one Solana server for the payment and for Solana's current block number (its own clock)
+async function lookupOne(url, sig) {
+  const [t, slot] = await Promise.all([
+    ask(url, "getTransaction", [sig, { encoding: "jsonParsed", commitment: "confirmed", maxSupportedTransactionVersion: 0 }]),
+    ask(url, "getSlot", [{ commitment: "confirmed" }])
+  ]);
+  if (!t) throw new Error("not found"); // this server has not seen it yet, so let another server answer
+  return { t, slot };
+}
+
+// Asks the servers one after another: the next server starts if the previous one fails or takes longer than 1.5 seconds.
+// The first good answer wins. This keeps the free servers from being flooded, which is what causes "busy" errors.
+function firstGood(sig, list) {
+  return new Promise((resolve, reject) => {
+    const errors = []; let started = 0, failed = 0, done = false;
+    const launch = () => {
+      if (started >= list.length) return;
+      lookupOne(list[started++], sig).then(v => { if (!done) { done = true; resolve(v); } }, e => {
+        errors.push(e); failed++;
+        if (failed === list.length && !done) { done = true; reject({ errors }); } else launch();
+      });
+      setTimeout(() => { if (!done) launch(); }, 1500);
+    };
+    launch();
+  });
+}
+
+// The server list is shuffled on every check so no single free server gets all the traffic.
+// If a Helius key is filled in at the top, that server is always tried first.
+function serverList() {
+  const list = RPCS.slice().sort(() => Math.random() - 0.5);
+  return HELIUS_KEY ? ["https://mainnet.helius-rpc.com/?api-key=" + HELIUS_KEY].concat(list) : list;
+}
+
+async function verifyTx(sig) {
+  // Up to 3 rounds, so a brief moment of "busy" from the free servers does not turn into an error for the visitor
+  const list = serverList();
+  let found, errs = [];
+  for (let round = 1; round <= 3 && !found; round++) {
+    try { found = await firstGood(sig, list); }
+    catch (e) {
+      errs = e.errors || [];
+      if (errs.some(x => x.invalid) && !errs.some(x => x.message === "not found")) break; // not a real hash, retrying will not help
+      if (round < 3) { setStatus("Solana's free servers are busy. Trying again (" + (round + 1) + " of 3)...", true); await new Promise(r => setTimeout(r, 2000)); }
+    }
+  }
+  if (!found) {
+    if (errs.some(x => x.message === "not found")) return "HASH PROBLEM: Solana cannot find that transaction yet. If you just paid, wait about 30 seconds and try again. Otherwise check that you copied the right hash.";
+    if (errs.some(x => x.invalid)) return "HASH PROBLEM: That does not look like a real Solana transaction hash. Please copy it again from your wallet or from Solscan.";
+    return "SERVER PROBLEM (not your fault): none of the " + list.length + " free Solana servers answered, so your hash was NOT checked. Please try again in a minute.";
+  }
+  const t = found.t;
+  if (t.meta && t.meta.err) return "PAYMENT PROBLEM: That transaction failed on the blockchain, so no tribute was received.";
+  if ((found.slot - t.slot) * 0.4 > WINDOW_SECONDS) return "HASH PROBLEM: That transaction is older than 25 minutes, so its hash has expired. Old hashes are worthless, just like the titles.";
+  const la = t.meta.loadedAddresses || {};
+  const keys = t.transaction.message.accountKeys.map(k => k.pubkey || k).concat(la.writable || [], la.readonly || []);
+  const sum = a => (a || []).filter(b => b.mint === USDT_MINT && (b.owner === WALLET || keys[b.accountIndex] === WALLET)).reduce((s, b) => s + Number(b.uiTokenAmount.amount), 0);
+  const got = sum(t.meta.postTokenBalances) - sum(t.meta.preTokenBalances);
+  if (got < MIN_UNITS) return "PAYMENT PROBLEM: We did not find enough USDT (about 1) arriving at our wallet in that transaction. Check the network and token.";
+  return "";
+}
+
+async function verifyViaWorker(sig) {
+  try {
+    const r = await fetch(WORKER_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ txid: sig }) });
+    const j = await r.json();
+    return j.ok ? "" : (j.message || "Verification failed. Please try again.");
+  } catch (e) { return "Could not reach the verification server. Please try again in a minute."; }
+}
+
+async function generateTitle() {
+  const desc = cleanInput($("user-description").value);
+  const txRaw = $("txid-input").value.trim();
+  const txid = (txRaw.match(/[1-9A-HJ-NP-Za-km-z]{64,90}/) || [txRaw])[0]; // also works if a Solscan link is pasted
+  let err = checkDescription(desc);
+  if (err) return setStatus(err);
+  if (!/^[1-9A-HJ-NP-Za-km-z]{64,90}$/.test(txid)) return setStatus("HASH PROBLEM: Please paste a valid Solana transaction hash (TXID) proving your USDT tribute has been sent.");
+  if (!$("legal-checkbox").checked) return setStatus("You must check the box acknowledging all disclaimers, overpayment rules, restrictions, and non-refundable terms!");
+  if (usedList().includes(txid)) return setStatus("HASH PROBLEM: This hash was already used. One dollar, one title. That is the law of the land.");
+
+  const btn = $("btn-generate"); btn.disabled = true; setStatus("Consulting the blockchain oracle...", true);
+  { const tw = $("test-wallet").value.trim(); if (tw) WALLET = tw; } // TEST ONLY
+  err = WORKER_URL ? await verifyViaWorker(txid) : await verifyTx(txid);
+  btn.disabled = !$("legal-checkbox").checked;
+  if (err) return setStatus(err);
+  markUsed(txid);
+
+  $("generated-title-display").innerText = makeTitle(desc);
+  $("user-echo-text").innerText = `Certified based on your input: "${desc}"`;
+  $("main-container").style.display = "none";
+  $("certificate-result").style.display = "block";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+const STOP = new Set("i im ive id ill me my mine myself a an the and or but nor so yet to of in on at with for from by as is am are was were be been being like likes love loves loving enjoy enjoys play plays playing played do does doing did make makes making spend spending time all long day days night nights every really very just much many lot lots get gets getting go goes going have has having it its that this these those who what when where why how always never too also some any one up out about into over after before than then can could would will should little bit kind sort person guy guys girl man woman human someone something thing things stuff want wants need needs try trying most more best good great nice big small only even still ever around there here they them their we us our you your he she his her him not no yes if because while until again once professional chronic certified official total absolute complete utter average normal regular real true actual proud humble".split(" "));
+
+function titleCase(w, orig) {
+  return /^[A-Z0-9]{2,}$/.test(orig) ? orig : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+}
+
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const RANKS = "Supreme,Grand,Chief,Senior,Junior,Lead,Honorary,Executive,Imperial,Royal,Certified,Licensed,Unlicensed,Elite,Legendary,Reigning,Retired,Part-Time,Full-Time,Self-Appointed,Acting,Interim,Master,Grandmaster,Principal,Distinguished,Eminent,Official,Unofficial,Veteran,Professional,Amateur,Founding,Head,Ultimate,Local,Global,Galactic,Undisputed,Visiting".split(",");
+const ROLES = "Architect,Overlord,Minister,Ambassador,Connoisseur,Specialist,Whisperer,Enthusiast,Guardian,Champion,Commander,Captain,Professor,Doctor,Sommelier,Detective,Strategist,Inspector,Emperor,Baron,Duke,Sorcerer,Sage,Oracle,Marshal,Admiral,General,Keeper,Defender,Curator,Archivist,Engineer,Analyst,Consultant,Mechanic,Chef,Goblin,Gremlin,Menace,Legend,Hero,Mascot,Mayor,Sheriff,Governor,Chancellor,Treasurer,Secretary,Navigator,Pioneer,Wrangler,Tamer,Inventor,Referee,Prodigy".split(",");
+const SUFFIX = "(Unofficially),(Allegedly),(Self-Certified),(Terms and Conditions Apply),(Not Legally Binding),(Pending Review),(Results May Vary),(Unverified),of Questionable Authority,by Popular Demand,Since Forever,in Training,at Large,Emeritus,Extraordinaire,Elect,First Class,of the Realm,Without Portfolio,Plenipotentiary,(Probably),(Details Unavailable),(Citation Needed),(Self-Appointed)".split(",");
+const PLACES = "the Realm,the Neighborhood,the Group Chat,the Internet,the Kingdom of Nothing,the Group Project,the Local Area,the Multiverse (Local Branch),the Waiting Room,the Comment Section,the Weekend,the Living Room,the Back Row,the Whole Block".split(",");
+const QUIRKS = "Undefeated in Their Own Mind,Fluent in Nonsense,Powered by Snacks,Running on Vibes,Terms and Conditions Apply,Not Legally Binding,Results May Vary,Certified by Nobody,Always Five Minutes Late,Loud and Proud,Qualified by Self-Declaration,Sponsored by Nobody,Unverified but Confident,Allegedly Famous,Professional Amateur,Trusted by Absolutely No One,Expert in Mild Chaos,Born Ready (Eventually),Famous in Their Own House,Mostly Harmless".split(",");
+const th = (words, roles, places, quirks) => ({ re: new RegExp("\\b(?:" + words + ")s?\\b"), roles: roles.split("|"), places: places.split("|"), quirks: quirks.split("|") });
+const THEMES = [
+  th("game|gaming|gamer|fortnite|minecraft|roblox|xbox|playstation|ps5|nintendo|esports|valorant|fifa|lobby|ranked|console|steam", "Squad Captain|Lobby Legend|Respawn Technician|Final Boss|Ladder Climber|Loot Goblin|Controller Whisperer|Clutch Specialist", "the Ranked Ladder|the Final Lobby|the Victory Screen|the Respawn Zone|Player Two's Couch", "Undefeated in Their Own Mind|Always One More Match Away|Lag Blamer First Class|Rage Quit Survivor|Fueled by Snacks and Hope"),
+  th("coffee|caffeine|espresso|latte|tea|chai|cappuccino", "Bean Whisperer|Espresso Enthusiast|Caffeine Chemist|Latte Artist (Self-Taught)|Brew Master|Mug Guardian|Barista Emeritus|Cold Brew Connoisseur", "the Morning Mug|the Third Cup|the Coffee Pot|the Breakfast Table", "Powered by Caffeine|Running on Espresso and Optimism|Decaf Is a Lie|Refill Required"),
+  th("sleep|sleeping|nap|napping|tired|lazy|bed|procrastinate|procrastinating|procrastination|couch|rest|insomnia", "Nap Strategist|Pillow Diplomat|Snooze Button Specialist|Blanket Architect|Couch Commander|Procrastination Consultant|Dream Engineer|Sleep Schedule Rebel", "the Snooze Button|the Soft Pillow|the Couch Kingdom|Bed Island", "Professionally Tired|Always Five Minutes Away|Hibernation Enthusiast|Awake by Accident"),
+  th("music|guitar|piano|drum|drums|sing|singing|song|band|rap|dj|violin|bass|concert", "Riff Commander|Melody Marshal|Beat Architect|Chorus Captain|Bassline Baron|Acoustic Ambassador|Playlist Curator|Shower Concert Performer", "the Main Stage|the Back Row of the Concert|the Shower Stage|the Playlist", "Off-Key but Proud|Loud by Nature|Encore Not Included|Always on Repeat"),
+  th("food|pizza|burger|cook|cooking|bake|baking|eat|eating|snack|chef|cake|pasta|sushi|taco|fries|chocolate|ice cream|dessert", "Snack Strategist|Pizza Inspector|Flavor Diplomat|Kitchen Commander|Dessert Detective|Leftover Archaeologist|Taste Tester|Fridge Raider", "the Kitchen|the Snack Drawer|the Buffet Line|the Fridge Light", "Always Hungry|Seconds Are Mandatory|Fluent in Leftovers|Calories Are a Rumor"),
+  th("gym|workout|fitness|run|running|football|soccer|basketball|sport|sports|lift|lifting|swim|swimming|cycling|tennis|yoga|train|training|marathon", "Rep Counter|Protein Strategist|Warm-Up Specialist|Locker Room Legend|Stamina Inspector|Gym Mascot|Cardio Commander|Weekend Warrior", "the Squat Rack|the Final Lap|the Locker Room|the Starting Line", "Stretches Optional|Sore but Proud|Leg Day Survivor|Hydration Reminder"),
+  th("code|coding|program|programming|developer|computer|tech|software|website|python|javascript|hacker|ai|robot|laptop|app|bug|crypto|bitcoin", "Bug Whisperer|Keyboard Commander|Debugging Detective|Semicolon Sentinel|Pixel Architect|Cloud Wrangler|Terminal Tamer|Stack Trace Scholar", "the Terminal|the Error Log|the Code Review|the Cloud", "Works on My Machine|Turned It Off and On Again|Fueled by Bugs|Ctrl+Z Enthusiast"),
+  th("book|books|read|reading|write|writing|study|studying|school|student|homework|exam|college|university|library|poem|novel|teacher|class", "Bookworm Baron|Library Guardian|Plot Twist Inspector|Homework Negotiator|Chapter Turner|Study Break Specialist|Footnote Scholar|Exam Survivor", "the Library|the Last Chapter|the Back of the Classroom|the Reading Nook", "Overdue Library Books Included|Highlighter Dependent|Deadline Survivor|One Chapter Away"),
+  th("travel|trip|hike|hiking|camp|camping|beach|mountain|adventure|explore|fishing|road|nature|garden|gardening|plant|plants", "Trail Navigator|Map Misreader|Campfire Captain|Souvenir Collector|Passport Stamper|Backpack Commander|Horizon Chaser|Garden Gnome Whisperer", "the Open Road|the Trailhead|the Campsite|the Window Seat", "Lost but Enjoying It|Wanderlust Pending|Snacks Packed|Always One More Mile"),
+  th("dog|cat|puppy|kitten|pet|animal|horse|bird|fish|hamster|bunny|rabbit", "Pet Whisperer|Treat Dispenser|Fur Collector|Belly Rub Specialist|Walkies Commander|Paw Ambassador|Zoomies Supervisor|Litter Box Inspector", "the Dog Park|the Couch Next to the Pets|the Treat Jar|the Sunny Spot", "Covered in Fur|Outranked by a Pet|Treats Are Currency|Fluent in Meow and Woof"),
+  th("movie|film|netflix|show|series|anime|tv|watch|watching|binge|cinema|youtube|tiktok|stream|streaming", "Binge Watcher|Plot Twist Predictor|Popcorn Commander|Remote Control Guardian|Subtitle Reader|Spoiler Dodger|Couch Critic|Episode Marathoner", "the Couch|the Next Episode|the Front Row|the Streaming Queue", "Just One More Episode|Spoiler-Free Zone|Buffering Survivor|Snacks Included"),
+  th("art|draw|drawing|paint|painting|design|photo|photography|craft|sketch|creative|edit|editing|fashion|style", "Doodle Director|Color Commander|Brush Strategist|Pixel Painter|Sketchbook Guardian|Canvas Captain|Aesthetic Consultant|Creative Chaos Coordinator", "the Blank Canvas|the Sketchbook|the Color Wheel|the Studio", "Inspired at 3 AM|Paint on Everything|Eraser Dependent|Masterpiece Pending"),
+  th("work|working|job|boss|office|business|money|rich|sales|meeting|meetings|career|hustle|entrepreneur|salary|shift", "Meeting Survivor|Spreadsheet Sentinel|Coffee Break Director|Email Warrior|Deadline Dodger|Budget Whisperer|Hustle Strategist|Cubicle Commander", "the Open Office|the Inbox|the Weekly Meeting|the Break Room", "Per My Last Email|Underpaid but Unbothered|Meetings Could Have Been Emails|Out of Office in Spirit"),
+  th("car|drive|driving|truck|bike|motorcycle|race|racing|engine", "Steering Wheel Sage|Traffic Survivor|Pit Stop Chief|Horsepower Enthusiast|Parking Spot Hunter|Gear Shift Guardian|Highway Navigator|Dashboard Commander", "the Fast Lane|the Parking Lot|the Open Highway|the Driver's Seat", "Backseat Driver Resistant|Always Low on Gas|Honks with Pride|Needs a Wash"),
+  th("friend|friends|family|boys|girls|squad|crew|party|hang|hanging|buddy|bros|bro|mom|dad|kids|sibling|brother|sister", "Squad Leader|Group Chat Founder|Party Planner|Sleepover Host|Hangout Strategist|Friend Group Treasurer|Crew Commander|Family Mediator (Unofficial)", "the Group Chat|the Hangout Spot|the Family Table|the Back Seat of the Friend Car", "Never Replies on Time|Plans That Never Happen|Always Brings Snacks|Loud in Group Settings"),
+  th("think|thinking|overthink|overthinking|overthinker|over-thinker|dream|dreamer|idea|ideas|philosophy|random", "Overthinking Consultant|Idea Collector|Daydream Director|3 AM Philosopher|Thought Spiral Navigator|Brain Tab Manager|Random Fact Archivist|Shower Thoughts Scholar", "the Shower|the 3 AM Hour|the Thought Bubble|the Mental Tab Graveyard", "Too Many Tabs Open|Thinks Before Thinking|Lost in Thought|Idea Hoarder")
+];
+
+// Builds a joke title from the strongest keywords, plus theme words when the description matches a topic
+function makeTitle(desc) {
+  const seen = new Set(), cands = [];
+  desc.split(/\s+/).forEach((raw, i) => {
+    const orig = raw.replace(/[^A-Za-z0-9'-]/g, "").replace(/^['-]+|['-]+$/g, "");
+    const w = orig.toLowerCase().replace(/'/g, "");
+    if (w.length < 3 || STOP.has(w) || seen.has(w)) return;
+    seen.add(w);
+    let score = w.length >= 6 ? 1 : 0;
+    if (i > 0 && /^[A-Z]/.test(orig)) score += 3; // capitalized mid-sentence = likely a brand/game
+    cands.push({ i, w, orig, score });
+  });
+  if (!cands.length) return pick(["Supreme Grand Architect of Absolutely Nothing", "Chief Executive of Doing Absolutely Nothing", "Minister of Mysterious Silence", "Honorary Professor of Vibes", "Local Legend (Details Unavailable)"]);
+  const low = desc.toLowerCase(), matched = THEMES.filter(t => t.re.test(low));
+  const ranked = cands.slice().sort((a, b) => b.score - a.score || b.w.length - a.w.length).slice(0, 3);
+  const build = () => {
+    const k = Math.min(ranked.length, pick([1, 2, 2, 2, 3]));
+    const [A, B, C] = ranked.slice(0, k + 0).map(c => c).sort(() => Math.random() - .5).map(c => titleCase(c.w, c.orig));
+    const rank = () => pick(RANKS), role = () => pick(ROLES), suf = () => Math.random() < .4 ? " " + pick(SUFFIX) : "";
+    const t = matched.length && Math.random() < .7 ? pick(matched) : null;
+    let S = [
+      () => `${rank()} ${role()} of ${A}${suf()}`,
+      () => `${rank()} ${A} ${role()}${suf()}`,
+      () => `The ${A} ${role()}${suf()}`,
+      () => `${rank()} ${role()} of ${pick(PLACES)} and ${A}`,
+      () => `${rank()} ${role()} of ${A} Affairs`,
+      () => `${role()} of ${A}, ${pick(QUIRKS)}`,
+      () => `${A} ${role()} ${pick(SUFFIX)}`,
+      () => pick([`Fluent in ${A}`, `Powered by ${A}`, `Fueled by ${A} and Poor Decisions`, `Certified in ${A} by Nobody`, `Unrivaled in ${A} (Unmeasured)`, `Loyal to ${A} Since Forever`]).replace(/^/, rank() + " " + role() + ", ")
+    ];
+    if (B) S = S.concat([
+      () => `${rank()} ${role()} of ${A} and ${B}${suf()}`,
+      () => `${rank()} ${A} and ${B} ${role()}${suf()}`,
+      () => `${role()} of ${A}, ${role()} of ${B}`,
+      () => `${A} by Day, ${B} by Night${suf()}`,
+      () => `Half ${A}, Half ${B}, Fully ${pick(["Qualified", "Unqualified", "Committed", "Legendary", "Unbothered", "Unstoppable", "Confused"])}`,
+      () => `${rank()} ${A}-${B} ${role()}${suf()}`
+    ]);
+    if (C) S = S.concat([
+      () => `${rank()} ${role()} of ${A}, ${B} and ${C}`,
+      () => `${A}, ${B} & ${C}: ${pick(["A Legend in Progress", "Triple Threat", "The Full Package", "Fully Certified (By Me)", "Unstoppable"])}`
+    ]);
+    if (t) S = [
+      () => `${rank()} ${pick(t.roles)}${suf()}`,
+      () => `${pick(t.roles)} of ${A}${suf()}`,
+      () => `${rank()} ${pick(t.roles)} of ${pick(t.places)}`,
+      () => `${pick(t.roles)} of ${pick(t.places)} and ${A}`,
+      () => `${A} ${pick(t.roles)}, ${pick(t.quirks)}`,
+      () => `${rank()} ${pick(t.roles)}, ${pick(t.quirks)}`,
+      () => `${rank()} ${pick(t.roles)} of ${A}${suf()}`,
+      () => `${rank()} ${pick(t.roles)} of ${pick(t.places)} ${pick(SUFFIX)}`,
+      () => `${rank()} ${pick(ROLES)} of ${pick(t.places)}${suf()}`,
+      () => `${pick(t.roles)} of ${A}${B ? " and " + B : ""}, ${pick(t.quirks)}`
+    ];
+    return pick(S)();
+  };
+  let out = "";
+  for (let n = 0; n < 8; n++) { out = build(); if (out.length <= 75) break; }
+  return out;
+}
+
+function wrapText(x, text, max) {
+  const lines = []; let cur = "";
+  for (const w of text.split(" ")) {
+    const t = cur ? cur + " " + w : w;
+    if (x.measureText(t).width > max && cur) { lines.push(cur); cur = w; } else cur = t;
+  }
+  lines.push(cur); return lines;
+}
+
+async function downloadCert() {
+  try { await document.fonts.load("700 44px Cinzel"); } catch (e) {}
+  const W = 1200, H = 800, c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const x = c.getContext("2d"), F = "Cinzel, Georgia, serif";
+  x.fillStyle = "#fff"; x.fillRect(0, 0, W, H);
+  x.strokeStyle = "#d4af37"; x.lineWidth = 10; x.strokeRect(30, 30, W - 60, H - 60);
+  x.lineWidth = 3; x.strokeRect(52, 52, W - 104, H - 104);
+  x.textAlign = "center";
+  x.fillStyle = "#b8860b"; x.font = "700 52px " + F; x.fillText("OFFICIALLY CERTIFIED TITLE", W / 2, 165);
+  x.fillStyle = "#555"; x.font = "italic 28px Georgia, serif"; x.fillText("Be it known that this document validates the existence of:", W / 2, 230);
+  x.fillStyle = "#0f172a"; x.font = "700 44px " + F;
+  const lines = wrapText(x, $("generated-title-display").innerText, W - 260);
+  const y0 = 400 - (lines.length - 1) * 30;
+  lines.forEach((l, i) => x.fillText(l, W / 2, y0 + i * 60));
+  x.fillStyle = "#94a3b8"; x.font = "bold 20px Arial, sans-serif";
+  x.fillText("OFFICIALLY MEANINGLESS — ISSUED BY SOME GUY ON THE INTERNET", W / 2, H - 105);
+  const url = c.toDataURL("image/png");
+  const a = document.createElement("a");
+  a.download = "certified-title.png"; a.href = url;
+  try { a.click(); } catch (e) {}
+  // Fallback for viewers that block downloads: show the image so it can be saved by hand
+  $("cert-preview").src = url; $("cert-preview").style.display = "block"; $("cert-hint").style.display = "block";
+}
+</script>
+</body>
+</html>
